@@ -1,6 +1,6 @@
 ![MasterHead](https://user-images.githubusercontent.com/74038190/213910845-af37a709-8995-40d6-be59-724526e3c3d7.gif)
 <h1 align="center">Hi 👋, I'm Dragoș</h1>
-<h3 align="center">A passionate, process-driven software developer and ML/AI enthusiast</h3>
+<h3 align="center">A passionate, results-driven software developer and ML/AI enthusiast</h3>
 
 <img align="right" alt="Coding" width="500" src="https://user-images.githubusercontent.com/74038190/212750147-854a394f-fee9-4080-9770-78a4b7ece53f.gif">
 
