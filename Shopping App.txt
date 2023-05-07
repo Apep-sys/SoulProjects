@@ -1,3 +1,5 @@
+# Console level application, in Python, that simulates an online shop
+# OOP based project; has functions for searching objects by their attributes
 class Catalog:
     """
     
