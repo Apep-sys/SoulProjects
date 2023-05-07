@@ -1,0 +1,34 @@
+a = "bar"
+cuv_format = ""
+cuv_gresit = []
+i = None
+for i in range(len(a)):
+    cuv_format += "_"
+incercari1 = 6
+for i in range(incercari1 + 1):
+    b = input("Introduceti litera: ")
+    incercari2 = incercari1 - i
+    if a.count(b) == 0:
+        cuv_gresit.append(b)
+        print("Nu ai nimerit litera.. Incearca din nou. ")
+    else:
+        for j in range(len(a)):
+            if a[j] == b:
+                if cuv_format.count(b) != 0:
+                    print("Ai gasit deja litera asta.")
+                else:
+                    cuv_format = list(cuv_format)
+                    cuv_format[j] = b
+                    cuv_format = "".join(cuv_format)
+                    print("Ai gasit o litera! Continua! ")
+    if cuv_format != a:
+        if cuv_gresit == []:
+            print("------\nIncercari ramase: ", incercari2, "\nCuvantul pana acum: ", cuv_format, "\n------\n")
+        else:
+            print("------\nIncercari esuate: ", cuv_gresit)
+            print("Incercari ramase: ", incercari2, "\nCuvantul pana acum: ", cuv_format, "\n------\n")
+    else:
+        print("Felicitari! Ai gasit cuvantul! ", cuv_format)
+        break
+if i == incercari1:
+    print("Nu ai gasit cuvantul. Get good.\nCuvantul era ",a)
