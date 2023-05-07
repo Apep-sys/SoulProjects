@@ -1,0 +1,172 @@
+class Catalog:
+    """
+    
+    Clasa 'Catalog' este o clasa ce contine produse electrocasnice variate.
+    
+    Atribute: 
+        listaObiecte([]): Lista din care produsele sunt preluate si sunt stocate.
+        clasa(str): Categorie generala de produse electrocasnice.
+        subclasa(str): Categorie specifica de produse electrocasnice.
+    """
+    
+    listaObiecte = []
+    clasa = ''
+    subclasa = ''
+    def __init__(self, pret, consum, producator, cod_produs):
+        """
+        
+        Constructor pentru clasa Catalog.
+        
+        Parametri:
+            pret(int): Pretul propriu al produsului.
+            consum(int): Consumul propriu al produsului.
+            producator(str): Producatorul de la care provine produsul.
+            cod_produs(str): Codul unic identificabil al produsului.
+        """
+        
+        self.pret = pret
+        self.consum = consum
+        self.producator = producator
+        self.cod_produs = cod_produs
+        Catalog.listaObiecte.append(self)
+
+    def __repr__(self):  
+        return '({}, {}, {}, {})'.format(self.pret, self.consum, self.producator, self.cod_produs)
+        """
+        Metoda pentru usoara reprezentare a produselor, la apelul functiei print().
+        """
+        
+    def sortare_consum():
+        sortare_consum = sorted(Catalog.listaObiecte, key=lambda e: e.consum)
+        print(sortare_consum)
+        """
+        Metoda pentru sortarea crescatoare, in functie de consum, a produselor.
+        
+        Parametri:
+            consum(int): Consumul propriu al produsului.
+            listaObiecte([]): Lista din care produsele sunt preluate si sunt stocate.
+            sortare_consum([]): Lista din care produsele sortate dupa consum sunt preluate.
+        """
+        
+    def sortare_pret():
+        sortare_pret = sorted(Catalog.listaObiecte, key=lambda e: e.pret)
+        print(sortare_pret)
+        """
+        Metoda pentru sortarea crescatoare, in functie de pret, a produselor.
+        
+        Parametri:
+            pret(int): Pretul propriu al produsului.
+            listaObiecte([]): Lista din care produsele sunt preluate si sunt stocate.
+            sortare_pret([]): Lista din care produsele sortate dupa pret sunt preluate.
+        """
+        
+    def sortare_producator(producator):
+        sortare_producator = [elem for elem in Catalog.listaObiecte if elem.producator == producator]
+        if sortare_producator:
+            print(sortare_producator)
+        else:
+            print("Nu avem produse de la acest producator.")
+        """
+        Metoda pentru sortarea crescatoare, in functie de consum, a produselor.
+        
+        Parametri:
+            producator(str): Producatorul de la care provine produsul.
+            listaObiecte([]): Lista din care produsele sunt preluate si sunt stocate.
+            sortare_producator([]): Lista din care produsele apartinand unui producator sunt preluate.
+        """
+
+    def sortare_subclasa(subclasa):
+        cautare_subclasa = [elem for elem in Catalog.listaObiecte if elem.subclasa == subclasa]
+        if cautare_subclasa:
+            print(cautare_subclasa)
+        else:
+            print('Nu avem niciun produs din aceasta subclasa.')
+        """
+        Metoda pentru sortarea crescatoare, in functie de consum, a produselor.
+        
+        Parametri:
+            cod_produs(str): Codul unic identificabil al produsului.
+            listaObiecte([]): Lista din care produsele sunt preluate si sunt stocate.
+            cautare_subclasa([]): Lista din care produsele apartinand unei subclase sunt preluate.
+        """
+        
+class Electrocasnice_Mari(Catalog):
+    def __init__(self, pret, consum, producator, cod_produs, adancime, latime, lungime):
+        super().__init__(pret, consum, producator, cod_produs)
+        self.adancime = adancime
+        self.latime = latime
+        self.lungime = lungime
+
+
+class Electrocasnice_Mici(Catalog):
+    def __init__(self, pret, consum, producator, cod_produs, lungime_cablu, baterie):
+        super().__init__(pret, consum, producator, cod_produs)
+        self.lungime_cablu = lungime_cablu
+        self.baterie = baterie
+
+
+class Frigider(Electrocasnice_Mari):
+    def __init__(self, pret, consum, producator, cod_produs, adancime, latime, lungime, capacitate_congelator, capacitate_frigider):
+        super().__init__(pret, consum, producator, cod_produs, adancime, latime, lungime)
+        self.capacitate_congelator = capacitate_congelator
+        self.capacitate_frigider = capacitate_frigider
+    clasa = 'Electrocasnice Mari'
+    subclasa = 'Frigider'
+
+
+class Aragaz(Electrocasnice_Mari):
+    def __init__(self, pret, consum, producator, cod_produs, adancime, latime, lungime, nr_arzatoare):
+        super().__init__(pret, consum, producator, cod_produs, adancime, latime, lungime)
+        self.nr_arzatoare = nr_arzatoare
+    clasa = 'Electrocasnice Mari'
+    subclasa = 'Aragaz'
+
+
+class Mixer(Electrocasnice_Mici):
+    def __init__(self, pret, consum, producator, cod_produs, lungime_cablu, baterie, rotatii_min):
+        super().__init__(pret, consum, producator, cod_produs, lungime_cablu, baterie)
+        self.rotatii_min = rotatii_min
+    clasa = 'Electrocasnice Mici'
+    subclasa = 'Mixer'
+
+
+class Fier_calcat(Electrocasnice_Mici):
+    def __init__(self, pret, consum, producator, cod_produs, lungime_cablu, baterie, rezervor):
+        super().__init__(pret, consum, producator, cod_produs, lungime_cablu, baterie)
+        self.rezervor = rezervor
+
+    clasa = 'Electrocasnice Mici'
+    subclasa = 'Fier Calcat'
+
+
+produs1 = Frigider(1000, 178, 'Bosch', 'FKGHL', 143, 55, 60, 165, 200)
+produs2 = Frigider(1200, 168, 'Bosch', 'FKGJL', 143, 55, 50, 155, 200)
+produs3 = Aragaz(600, 60, 'Bosch', 'JGGK', 120, 45, 50, 6)
+produs4 = Aragaz(500, 20, 'Beko', 'JGJL', 120, 50, 60, 4)
+produs5 = Mixer(120, 200, 'Tefal', 'KLLD', 50, 660, 100)
+produs6 = Mixer(200, 330, 'Tefal', 'KLLJ', 50, 770, 100)
+produs7 = Fier_calcat(300, 169, 'Philips', 'UOOP', 50, 2600, 150)
+produs8 = Fier_calcat(60, 140, 'Philips', 'UOOJ', 70, 2400, 130)
+
+
+
+def proiect_final():
+    user = input('Selectati comanda(sortare_consum, sortare_pret, sortare_producator, sortare_subclasa): ').lower()
+    if user == 'sortare_consum':
+        Catalog.sortare_consum()
+    elif user == 'sortare_pret':
+        Catalog.sortare_pret()
+    elif user == 'sortare_producator':
+        producator = input("Introduceti producatorul pe care il doriti: ").title()
+        Catalog.sortare_producator(producator)
+    elif user == 'sortare_subclasa':
+        sbclas = input("Introduceti subclasa pe care o doriti: ").title()
+        Catalog.sortare_subclasa(sbclas)
+    else:
+        print("Va rugam introduceti o comanda valida.")
+        proiect_final()
+
+#import proiect_final
+print(produs1)
+
+proiect_final()
