@@ -1,3 +1,6 @@
+# Hangman console game developed in Python. 
+# Course assignment.
+
 a = "bar"
 cuv_format = ""
 cuv_gresit = []
