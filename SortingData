@@ -1,0 +1,109 @@
+# Console level application for sorting data such as name and age
+# Course assignment.
+
+lista_persoane = []
+
+def functie():
+    da_nu = " "
+    lista_comenzi = ['afisare', 'sortare', 'max', 'min']
+    while True:
+        if da_nu == " " or da_nu == "Da":
+            nume = input("Introduceti numele: ").capitalize()
+            prenume = input("Introduceti prenumele: ").capitalize()
+            varsta = input("Introduceti varsta: ").capitalize()
+            lista_persoane.append(",".join([nume, prenume, varsta + ","]) + " \n")
+            da_nu = input("Introduceti alte date?\nDa / Nu: ").capitalize()
+        if da_nu == "Da":
+            continue
+        elif da_nu == "Nu":
+            while True:
+                comanda = input("Introduceti comanda (afisare, sortare, max, min): ")
+                lista_persoane.append(comanda)
+                if comanda not in lista_comenzi:
+                    print("\nComanda nu este valida.\n")
+                    continue
+                else:
+                    break
+            break
+        else:
+            while da_nu != "Da" and da_nu != "Nu":
+                print("Nu este un raspuns valid.")
+                da_nu = input("Introduceti alte date?\nDa / Nu: ").capitalize()
+            continue
+
+
+def sortare():
+    print("".join(sorted(lista_noua)))
+
+
+def afisare():
+    afisare = "".join(lista_noua).split("\n")[:-1]
+    afisare = "".join(afisare).split(",")[:-1]
+    poz = 0
+    try:
+        for element in afisare:
+            print(f"Prenume: {afisare[poz]}| Nume: {afisare[poz + 1]}| Varsta: {afisare[poz + 2]}")
+            poz += 3
+    except IndexError as eroare:
+        pass
+
+
+def max():
+    afisare = "".join(lista_noua).split("\n")[:-1]
+    afisare = "".join(afisare).split(",")[:-1]
+    poz = 2
+    maxim = int(afisare[poz])
+    try:
+        for element in afisare:
+            if maxim < int(afisare[poz]):
+                maxim = int(afisare[poz])
+            poz += 3
+    except IndexError:
+        print("Varsta maxima este", maxim, "ani")
+        pass
+
+
+def min():
+    afisare = "".join(lista_noua).split("\n")[:-1]
+    afisare = "".join(afisare).split(",")[:-1]
+    poz = 2
+    minim = int(afisare[poz])
+    try:
+        for element in afisare:
+            if minim > int(afisare[poz]):
+                minim = int(afisare[poz])
+            poz += 3
+    except IndexError:
+        print("Varsta minima este", minim, "ani")
+        pass
+
+functie()
+
+try:
+    with open("fisier", "w") as f:
+        f.writelines("".join(lista_persoane))
+    with open("fisier", "r") as f:
+        lista_persoane = f.readlines()
+    lista_noua = lista_persoane[:-1]
+    comanda = lista_persoane[-1]
+    if comanda == "sortare":
+        sortare()
+    elif comanda == "afisare":
+        afisare()
+    elif comanda == "max":
+        max()
+    elif comanda == "min":
+        min()
+except:
+    print("Oops! Nu avem niciun fisier.\nVom sorta fara.")
+    lista_noua = lista_persoane[:-1]
+    comanda = lista_persoane[-1]
+    if comanda == "sortare":
+        sortare()
+    elif comanda == "afisare":
+        afisare()
+    elif comanda == "max":
+        max()
+    elif comanda == "min":
+        min()
+    
