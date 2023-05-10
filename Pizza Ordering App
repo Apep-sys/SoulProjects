@@ -1,0 +1,32 @@
+# Console level pizza ordering app in Python
+# Course assignment.
+
+meniu = {'Carbonara': 16.50, 'Capriciosa': 15.00, 'Diavola': 20.00, 'Taraneasca': 19.50, 'Quattro Stagioni': 17.50}
+cos_cumparaturi = {}
+print("****************\nMeniul zilei este:")
+for pizza, pret in meniu.items():
+    print(f"Pizza {pizza} la doar {pret} lei")
+print("****************")
+while True:
+    pizza_aleasa = input("Alegeti ce pizza doriti: ").title()	  
+    if pizza_aleasa in cos_cumparaturi:
+        cos_cumparaturi.update({pizza_aleasa: meniu.get(pizza_aleasa) + pret})
+    else:
+        cos_cumparaturi.update({pizza_aleasa: meniu.get(pizza_aleasa)})
+    total = 0
+    for pret in cos_cumparaturi.values():
+        total += pret
+    print("\n-------------------\nCos de cumparaturi curent:")
+    for pizza, pret in cos_cumparaturi.items():
+        print(pizza, 'x' + str(round(cos_cumparaturi.get(pizza) / meniu.get(pizza))), pret)
+    print("Totalul este:", total)
+    print("Total cu TVA:", round(total - (total * 0.2) / 100, 1), "\n-------------------")
+    ans = input("Doriti sa continuati cumparaturile? \nDa / Nu: ")
+    if ans == "Da":
+        continue
+    else:
+        print("\nVa multumim!\n")
+        for pizza, pret in cos_cumparaturi.items():
+            print(pizza,'x' + str(round(cos_cumparaturi.get(pizza) / meniu.get(pizza))), pret)
+        print("Total de plata:", total)
+        break
