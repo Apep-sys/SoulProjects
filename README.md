@@ -7,7 +7,7 @@
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=apep-sys&label=Profile%20views&color=0e75b6&style=flat" alt="apep-sys" /> </p>
 
-- 🔭 I’m currently working on **Poker Game**
+- 🔭 I’m currently working on **Text Adventure Game**
 
 - 🌱 I’m currently learning **Google Cloud and Computer Vision**
 
